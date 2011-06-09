@@ -52,7 +52,7 @@ def create_cmml(html, ogg_file):
             remove_ws = re.compile('\s+')
             for t in times:
                 txt = ''
-                for c in t.parent.parent.findAll(text=True):
+                for c in t.parent.findAll(text=True):
                     if c is not t: txt += c
                 txt = remove_ws.sub(' ', txt)
                 txt = txt.strip()
