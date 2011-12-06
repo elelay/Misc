@@ -29,7 +29,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gpodder
-from gpodder.liblogger import log,enable_verbose
+from gpodder.liblogger import log
 
 import urllib2
 import BeautifulSoup
@@ -70,7 +70,7 @@ def create_cmml_from_file(ogg_file):
     m = re.match('(.*linuxoutlaws)([0-9]+)\\.(ogg|mp3)',ogg_file)
     if m is not None:
     	episode_num = m.group(2)
-    	url = 'http://linuxoutlaws.com/podcast/ogg/' + episode_num
+    	url = 'http://sixgun.org/linuxoutlaws/' + episode_num
     	log("downloading show notes for episode %s" % episode_num)
     	page = urllib2.urlopen(url)
     	create_cmml(page,ogg_file)
@@ -93,7 +93,6 @@ class gPodderHooks(object):
         	create_cmml(html,ogg_file)
 
 if __name__ == '__main__':
-    enable_verbose()
     if len(sys.argv) != 2:
         print("Usage: %s PATH_TO_LINUXOUTLAWSEPISODEXXX.ogg"%sys.argv[0])
     else:
